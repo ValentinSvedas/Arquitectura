@@ -16,7 +16,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 public class DAOProducto {
 
 
-	public void addProductos(Connection conn) throws SQLException, IOException {
+	public void add(Connection conn) throws SQLException, IOException {
 		CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("productos.csv"));
 			String insert = "INSERT INTO producto (id, name, value) VALUES(?,?,?)";
 
@@ -28,6 +28,20 @@ public class DAOProducto {
 			ps.executeUpdate();
 			ps.close();	
 			}
+	}
+
+	public void addProducto_facturas(Connection conn) throws SQLException, IOException {
+		CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("facturas-productos.csv"));
+		String insert = "INSERT INTO factura_producto (facturaid, productoid, cantidad) VALUES(?,?,?)";
+
+		for(CSVRecord row: parser) {
+			PreparedStatement ps = conn.prepareStatement(insert);
+			ps.setInt(1, NumberUtils.toInt(row.get("idFactura")));
+			ps.setInt(2, NumberUtils.toInt(row.get("idProducto")));
+			ps.setInt(3, NumberUtils.toInt(row.get("cantidad")));
+			ps.executeUpdate();
+			ps.close();
+		}
 	}
 
 }

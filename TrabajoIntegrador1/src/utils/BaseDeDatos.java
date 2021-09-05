@@ -14,6 +14,7 @@ public class BaseDeDatos {
 	private DAOCliente dc = new DAOCliente();
 	private DAOFactura df = new DAOFactura();
 	private DAOProducto dp = new DAOProducto();
+
 	public void conectarBase(){
 		// TODO Auto-generated method stub
 		String driver = "com.mysql.cj.jdbc.Driver";
@@ -25,14 +26,16 @@ public class BaseDeDatos {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		
 
         String uri = "jdbc:mysql://localhost:3306/exampleDB";
         
         try {
 			Connection conn = DriverManager.getConnection(uri, "root", "password");
 			conn.setAutoCommit(false);
-			dp.addProductos(conn);
+			//dp.add(conn);
+			dc.add(conn);
+			df.add(conn);
+			dp.addProducto_facturas(conn);
 			conn.commit();
 			conn.close();
 
@@ -40,8 +43,8 @@ public class BaseDeDatos {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-  
 	}
+
 	private void createTables(Connection conn) throws SQLException {
 		String table = "CREATE TABLE cliente("+
 				"id INT NOT NULL," +
