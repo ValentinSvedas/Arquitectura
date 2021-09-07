@@ -1,10 +1,11 @@
 package entities;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente>{
 
 	private String name;
 	private String email;
 	private int id;
+	private int cantFacturacionTotal;
 	
 	public Cliente(String name, String email, int id) {
 		super();
@@ -31,6 +32,22 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public int getCantFacturacionTotal() {
+		return cantFacturacionTotal;
+	}
+	public void setCantFacturacionTotal(int cantFacturacionTotal) {
+		this.cantFacturacionTotal = cantFacturacionTotal;
+	}
+	@Override
+	public int compareTo(Cliente c2) {
+		return this.getCantFacturacionTotal() - c2.getCantFacturacionTotal();
+	}
+	
+	@Override
+	public String toString() {
+		return name +" "+ this.cantFacturacionTotal;
+	}
+	
 	
 	
 }

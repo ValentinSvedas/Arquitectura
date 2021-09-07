@@ -5,17 +5,23 @@ import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 import dao.DAOCliente;
 import dao.DAOFactura;
 import dao.DAOProducto;
+import entities.Cliente;
+import entities.Factura;
+import entities.Producto;
 
 public class BaseDeDatos {
 	private DAOCliente dc = new DAOCliente();
 	private DAOFactura df = new DAOFactura();
 	private DAOProducto dp = new DAOProducto();
 
-	public void conectarBase(){
+	public void conectarBase() throws IOException{
 		// TODO Auto-generated method stub
 		String driver = "com.mysql.cj.jdbc.Driver";
 		try {
@@ -32,17 +38,32 @@ public class BaseDeDatos {
         try {
 			Connection conn = DriverManager.getConnection(uri, "root", "password");
 			conn.setAutoCommit(false);
-			//dp.add(conn);
+			createTables(conn);
+			dp.add(conn);
 			dc.add(conn);
 			df.add(conn);
 			dp.addProducto_facturas(conn);
+			dp.cantidadProductos(conn);
+			facturacion(conn);
 			conn.commit();
 			conn.close();
 
-		} catch (SQLException | IOException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void facturacion(Connection conn) throws SQLException {
+		ArrayList<Cliente> clientes = dc.getClientes(conn);
+		for(Cliente cli: clientes) {
+			int cantTotal=0; //cantidad de facturación por cliente
+			cantTotal = df.cantidadProductoPorFactura(conn,cli.getId());
+			cli.setCantFacturacionTotal(cantTotal);
+		}
+		Collections.sort(clientes);
+		Collections.reverse(clientes);
+		System.out.println(clientes);
 	}
 
 	private void createTables(Connection conn) throws SQLException {
