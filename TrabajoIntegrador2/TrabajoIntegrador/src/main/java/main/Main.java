@@ -1,7 +1,10 @@
 package main;
 
+import entities.Carrera;
 import entities.Estudiante;
 import model.Genero;
+import model.dto.CarreraInscriptos;
+import repository.CarreraRepositoryImpl;
 import repository.EstudianteRepository;
 import repository.EstudianteRepositoryImpl;
 
@@ -9,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -33,10 +37,20 @@ E) recuperar los estudiantes de una determinada carrera, filtrado por ciudad de 
 inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
 los años de manera cronológica.
  */
-        EstudianteRepositoryImpl estudianteRepository = new EstudianteRepositoryImpl();
-        Estudiante e = new Estudiante(1, "nombre", 10, Genero.FEMENINO, 1, "city", new ArrayList<>());
-        e.setCarreras(null);
-        estudianteRepository.add(e);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Practico2");
+
+        EstudianteRepositoryImpl estudianteRepository = new EstudianteRepositoryImpl(emf.createEntityManager());
+        Estudiante e = new Estudiante("nombre", 10, Genero.FEMENINO, 10, "city");
+//        estudianteRepository.add(e);
+
+
+        CarreraRepositoryImpl carreraRepository = new CarreraRepositoryImpl(emf.createEntityManager());
+        Carrera carrera = new Carrera();
+//        carreraRepository.add(carrera);
+
+        List<CarreraInscriptos> inscriptosPorCarrera = carreraRepository.getInscriptosPorCarrera();
+
+
 
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Example");
 //        EntityManager em = emf.createEntityManager();

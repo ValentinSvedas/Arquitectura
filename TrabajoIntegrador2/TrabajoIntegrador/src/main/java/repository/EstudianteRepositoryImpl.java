@@ -8,17 +8,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class EstudianteRepositoryImpl implements EstudianteRepository {
+public class EstudianteRepositoryImpl extends AbstractRepository<Estudiante> implements EstudianteRepository {
 
-    @Override
-    public void add(Estudiante e) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Practico2");
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(e);
-        em.getTransaction().commit();
-        em.close();
-        emf.close();
+    public EstudianteRepositoryImpl(EntityManager entityManager) {
+        super(entityManager);
     }
 
     @Override
