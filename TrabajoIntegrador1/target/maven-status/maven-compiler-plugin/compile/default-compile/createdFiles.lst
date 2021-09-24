@@ -1,8 +1,0 @@
-entities\Cliente.class
-entities\Factura.class
-utils\BaseDeDatos.class
-entities\Producto.class
-dao\DAOProducto.class
-dao\DAOFactura.class
-dao\DAOCliente.class
-main\Main.class

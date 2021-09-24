@@ -1,6 +1,16 @@
+# Eclipse
 .classpath
 .project
-.idea
+.settings/
+
+# Intellij
+.idea/
 *.iml
-target
-TrabajoIntegrador2/TrabajoIntegrador/TrabajoIntegrador.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
