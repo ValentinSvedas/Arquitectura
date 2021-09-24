@@ -4,68 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b571720-4fc3-4e2e-93af-3dacb6fb5550" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/TrabajoIntegrador2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_11_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_26.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_11_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_2_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_5_7_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_entitymanager_5_5_7_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_27_0_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_2_3_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_2_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_20.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/TrabajoIntegrador.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/entities/Carrera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/entities/Estudiante.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/entities/EstudianteCarrera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/main/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/CarreraRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/CarreraRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/EstudianteCarreraRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/EstudianteCarreraRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/EstudianteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/EstudianteRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/utils/EstudianteCarreraPK.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/TrabajoIntegrador-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/entities/Carrera.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/entities/Estudiante.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/entities/EstudianteCarrera.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/main/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/repository/CarreraRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/repository/CarreraRepositoryImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/repository/EstudianteCarreraRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/repository/EstudianteCarreraRepositoryImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/repository/EstudianteRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/repository/EstudianteRepositoryImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/utils/EstudianteCarreraPK.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+    <list default="true" id="6b571720-4fc3-4e2e-93af-3dacb6fb5550" name="Default Changelist" comment="Creadas las tablas en la BD sin relaciones">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/entities/Carrera.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/entities/Carrera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/entities/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/entities/Estudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/entities/EstudianteCarrera.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/entities/EstudianteCarrera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/CarreraRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/CarreraRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/EstudianteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/EstudianteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/EstudianteRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/java/repository/EstudianteRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/entities/Carrera.class" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/entities/Carrera.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/entities/Estudiante.class" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/entities/Estudiante.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/entities/EstudianteCarrera.class" beforeDir="false" afterPath="$PROJECT_DIR$/TrabajoIntegrador/target/classes/entities/EstudianteCarrera.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,8 +108,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1632343023711</updated>
-      <workItem from="1632343025300" duration="16016000" />
+      <workItem from="1632343025300" duration="22801000" />
     </task>
+    <task id="LOCAL-00001" summary="Creadas las tablas en la BD sin relaciones">
+      <created>1632417815713</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1632417815713</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,5 +136,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Creadas las tablas en la BD sin relaciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creadas las tablas en la BD sin relaciones" />
   </component>
 </project>

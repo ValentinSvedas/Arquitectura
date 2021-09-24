@@ -12,13 +12,15 @@ public class EstudianteCarrera {
     @EmbeddedId
     private EstudianteCarreraPK id;
 
-//    @MapsId("estudianteId")
-//    @JoinColumn(insertable = false, updatable = false)
-//    private Estudiante estudiante;
-//
-//    @MapsId("carreraId")
-//    @JoinColumn(insertable = false, updatable = false)
-//    private Carrera carrera;
+   @MapsId("estudianteId")
+   @JoinColumn(insertable = false, updatable = false)
+   @ManyToOne(fetch = FetchType.LAZY)
+   private Estudiante estudiante;
+
+    @MapsId("carreraId")
+    @JoinColumn(insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Carrera carrera;
 
     @Column
     private Date inscripcion;
