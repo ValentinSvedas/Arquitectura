@@ -1,10 +1,18 @@
 package main;
 
+import entities.Estudiante;
+import model.Genero;
+import repository.EstudianteRepository;
+import repository.EstudianteRepositoryImpl;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
 
 public class Main {
+
+
     public static void main(String args[]){
 /*
 1) Considere el diseño de un registro de estudiantes, con la siguiente información: nombres,
@@ -25,12 +33,16 @@ E) recuperar los estudiantes de una determinada carrera, filtrado por ciudad de 
 inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
 los años de manera cronológica.
  */
+        EstudianteRepositoryImpl estudianteRepository = new EstudianteRepositoryImpl();
+        Estudiante e = new Estudiante(1, "nombre", 10, Genero.FEMENINO, 1, "city", new ArrayList<>());
+        e.setCarreras(null);
+        estudianteRepository.add(e);
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Example");
-        EntityManager em = emf.createEntityManager();
-
-        em.close();
-        emf.close();
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Example");
+//        EntityManager em = emf.createEntityManager();
+//
+//        em.close();
+//        emf.close();
 
     }
 }

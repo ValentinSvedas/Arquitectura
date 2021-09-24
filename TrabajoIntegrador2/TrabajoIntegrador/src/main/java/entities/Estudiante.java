@@ -1,6 +1,9 @@
 package entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import model.Genero;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -8,6 +11,8 @@ import java.util.List;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Estudiante {
 
     @Id
@@ -18,13 +23,13 @@ public class Estudiante {
     @Column
     private int edad;
     @Column
-    private boolean genero;
+    private Genero genero;
     @Column
     private int numDocumento;
     @Column
     private String ciudad;
 
     @OneToMany(mappedBy = "estudiante")
-   private List<EstudianteCarrera> carreras;
+    private List<EstudianteCarrera> carreras;
 
 }
