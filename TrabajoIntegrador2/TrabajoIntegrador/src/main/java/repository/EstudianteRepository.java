@@ -1,16 +1,12 @@
 package repository;
 
 import entities.Estudiante;
+import model.Genero;
 import model.TipoOrdenamiento;
 
 import java.util.List;
 
 public interface EstudianteRepository {
-    /**
-     * Agrega estudiante
-     */
-    void add(Estudiante e);//Añadir estudiantes a la BD
-
     /**
      * recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
      */
@@ -24,11 +20,12 @@ public interface EstudianteRepository {
     /**
      * Recuperar todos los estudiantes, en base a su género.
      */
-    List<Estudiante> estudiantesGenero(boolean g);
+    List<Estudiante> estudiantesGenero(Genero g);
 
     /**
      * Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
+     * @return
      */
-    List<Estudiante> estudiantesResidencia();
+    List<List<Estudiante>> estudiantesResidencia();
 
 }

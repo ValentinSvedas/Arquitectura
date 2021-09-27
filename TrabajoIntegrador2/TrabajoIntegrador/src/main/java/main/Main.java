@@ -3,6 +3,7 @@ package main;
 import entities.Carrera;
 import entities.Estudiante;
 import model.Genero;
+import model.TipoOrdenamiento;
 import model.dto.CarreraInscriptos;
 import repository.CarreraRepositoryImpl;
 import repository.EstudianteRepository;
@@ -40,13 +41,18 @@ los años de manera cronológica.
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Practico2");
 
         EstudianteRepositoryImpl estudianteRepository = new EstudianteRepositoryImpl(emf.createEntityManager());
-        Estudiante e = new Estudiante("nombre", 10, Genero.FEMENINO, 10, "city");
-//        estudianteRepository.add(e);
+        //Estudiante e = new Estudiante("nombre", 10, Genero.FEMENINO, 10, "city");
+        //Estudiante e2 = new Estudiante("nombree",  10, Genero.FEMENINO, 10, "city");
+        //Estudiante e3 = new Estudiante("nombr2e", 10, Genero.FEMENINO, 10, "city");
+
+       //System.out.println(estudianteRepository.estudiantesOrdenados(TipoOrdenamiento.DESCENDENTE));
+        //System.out.println(estudianteRepository.getEstudiante(1));
 
 
         CarreraRepositoryImpl carreraRepository = new CarreraRepositoryImpl(emf.createEntityManager());
-        Carrera carrera = new Carrera();
-//        carreraRepository.add(carrera);
+      //  Carrera carrera = new Carrera();
+
+
 
         List<CarreraInscriptos> inscriptosPorCarrera = carreraRepository.getInscriptosPorCarrera();
 
@@ -55,8 +61,7 @@ los años de manera cronológica.
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Example");
 //        EntityManager em = emf.createEntityManager();
 //
-//        em.close();
-//        emf.close();
 
+        estudianteRepository.close();
     }
 }
