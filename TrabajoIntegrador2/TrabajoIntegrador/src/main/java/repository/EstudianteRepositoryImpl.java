@@ -1,5 +1,6 @@
 package repository;
 
+import entities.Carrera;
 import entities.Estudiante;
 import model.Genero;
 import model.TipoOrdenamiento;
@@ -61,34 +62,18 @@ public class EstudianteRepositoryImpl extends AbstractRepository<Estudiante> imp
     }
 
     @Override
-    public List<List<Estudiante>> estudiantesResidencia() {
+    public List<Estudiante> estudiantesResidencia(Carrera c, String ciudad) {
+        int id = c.getCarreraId();
         List<Estudiante> estudiantes = new ArrayList<>();
-        String query = "SELECT e"
+        Query nativeQuery = entityManager.createQuery("SELECT e"
                 + " from Estudiante e "
-                +"ORDER BY e.ciudad";
-        Query nativeQuery = entityManager.createQuery(query);
-        List<Estudiante> nativeQueryResultList = nativeQuery.getResultList();
-        String currentCiudad  = "";
-        List<List<Estudiante>> ciudadEstudiantes= new ArrayList<>();
-        for (int i = 0; i < nativeQueryResultList.size(); i++) {
-            String newCiudad = nativeQueryResultList.get(i).getCiudad();
+                + "JOIN EstudianteCarrera ec on ec.estudiante = e "
+                + "JOIN ec.carrera c on c.carreraId = :id "
+                + "WHERE e.ciudad like :ciudad");
 
-            if (newCiudad != currentCiudad) {
-                currentCiudad = newCiudad;
-                ciudadEstudiantes.add(estudiantes);
-                estudiantes.clear();
-            }
-            Estudiante estudiante = new Estudiante(
-                     nativeQueryResultList.get(i).getEstudianteId(),
-                     nativeQueryResultList.get(i).getCiudad(),
-                     nativeQueryResultList.get(i).getEdad(),
-                     nativeQueryResultList.get(i).getGenero(),
-                     nativeQueryResultList.get(i).getNombre(),
-                     nativeQueryResultList.get(i).getNumDocumento()
-            );
-            estudiantes.add(estudiante);
-        }
-        return ciudadEstudiantes;
+        List<Estudiante> nativeQueryResultList = nativeQuery.getResultList();
+
+        return getEstudiantes(estudiantes, nativeQueryResultList);
     }
 
     private List<Estudiante> getEstudiantes(List<Estudiante> estudiantes, List<Estudiante> nativeQueryResultList) {

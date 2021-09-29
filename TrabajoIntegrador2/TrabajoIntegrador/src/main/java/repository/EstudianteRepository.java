@@ -1,5 +1,6 @@
 package repository;
 
+import entities.Carrera;
 import entities.Estudiante;
 import model.Genero;
 import model.TipoOrdenamiento;
@@ -26,6 +27,6 @@ public interface EstudianteRepository {
      * Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
      * @return
      */
-    List<List<Estudiante>> estudiantesResidencia();
+    List<Estudiante> estudiantesResidencia(Carrera c,String ciudad);
 
 }

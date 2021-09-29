@@ -47,8 +47,9 @@ los años de manera cronológica.
 
        //System.out.println(estudianteRepository.estudiantesOrdenados(TipoOrdenamiento.DESCENDENTE));
         //System.out.println(estudianteRepository.getEstudiante(1));
+        Carrera c = new Carrera(1,"abogacia",10);
 
-
+        System.out.println(estudianteRepository.estudiantesResidencia(c,"Maipu"));
         CarreraRepositoryImpl carreraRepository = new CarreraRepositoryImpl(emf.createEntityManager());
       //  Carrera carrera = new Carrera();
 
