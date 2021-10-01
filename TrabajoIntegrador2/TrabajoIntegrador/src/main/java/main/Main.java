@@ -45,27 +45,25 @@ los años de manera cronológica.
 
         EstudianteRepositoryImpl estudianteRepository = new EstudianteRepositoryImpl(emf.createEntityManager());
         CarreraRepositoryImpl carreraRepository = new CarreraRepositoryImpl(emf.createEntityManager());
-        Estudiante e = new Estudiante("pepe", 10, Genero.FEMENINO, 10, "city");
+        Estudiante e = new Estudiante("Pepe", 10, Genero.MASCULINO, 10, "Loberia");
+        Estudiante e2 = new Estudiante("Roja", 10, Genero.FEMENINO, 10, "Tandil");
+        Estudiante e3 = new Estudiante("Juan", 10, Genero.MASCULINO, 10, "Rauch");
+        Estudiante e4 = new Estudiante("Rocio", 10, Genero.FEMENINO, 10, "Tandil");
         Carrera c = new Carrera("abogacia",10);
+        Carrera c2 = new Carrera("progaramacion",2);
 
 
         estudianteRepository.add(e);
+        estudianteRepository.add(e2);
+        estudianteRepository.add(e3);
+        estudianteRepository.add(e4);
         carreraRepository.add(c);
+        carreraRepository.add(c2);
 
-        EstudianteCarreraRepositoryImpl estudianteCarreraRepository = new EstudianteCarreraRepositoryImpl(emf.createEntityManager());
-
-        estudianteCarreraRepository.addEstudiante(estudianteRepository.getEstudiante(1),carreraRepository.getCarreraById(1));
-
-       //System.out.println(estudianteRepository.estudiantesOrdenados(TipoOrdenamiento.DESCENDENTE));
-        //System.out.println(estudianteRepository.getEstudiante(1));
-
-      //  Carrera carrera = new Carrera();
-
-
-
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Example");
-//        EntityManager em = emf.createEntityManager();
-//
+        //Algunos ejemplos de consultas
+        System.out.println(estudianteRepository.getEstudiante(2));
+        TipoOrdenamiento to = TipoOrdenamiento.ASCENDENTE;
+        System.out.println(estudianteRepository.estudiantesOrdenados(to));
 
         estudianteRepository.close();
 
