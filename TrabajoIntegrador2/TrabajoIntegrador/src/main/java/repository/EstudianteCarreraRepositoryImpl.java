@@ -10,6 +10,8 @@ import entities.EstudianteCarrera;
 import model.dto.ReporteCarreras;
 import utils.EstudianteCarreraPK;
 
+import javax.persistence.EntityManager;
+
 public class EstudianteCarreraRepositoryImpl extends AbstractRepository<EstudianteCarrera> implements EstudianteCarreraRepository {
 
     public EstudianteCarreraRepositoryImpl(EntityManager entityManager) {
@@ -22,7 +24,8 @@ public class EstudianteCarreraRepositoryImpl extends AbstractRepository<Estudian
         estudianteCarreraPK.setEstudianteId(e.getEstudianteId());
         estudianteCarreraPK.setCarreraId(carrera.getCarreraId());
 
-        EstudianteCarrera estudianteCarrera = new EstudianteCarrera(estudianteCarreraPK, e, carrera, new Date(), null);
+        EstudianteCarrera estudianteCarrera = new EstudianteCarrera(estudianteCarreraPK,e,carrera, null, null);
+
         add(estudianteCarrera);
     }
 

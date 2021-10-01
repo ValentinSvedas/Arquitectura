@@ -54,8 +54,8 @@ public class CarreraRepositoryImpl extends AbstractRepository<Carrera> implement
             carreraInscriptos.addEstudiante(estudiante);
         }
 
-        Comparator<CarreraInscriptos> comparator = (carrera1, carrera2) -> carrera1.getInscriptos().size().compareTo(carrera2.getInscriptos().size());
-        carreras.sort(comparator);
+        Comparator<CarreraInscriptos> comparator = Comparator.comparingInt(carrera -> carrera.getInscriptos().size());
+        carreras.sort(comparator.reversed());
         return carreras;
     }
 }

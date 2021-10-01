@@ -2,10 +2,12 @@ package main;
 
 import entities.Carrera;
 import entities.Estudiante;
+import entities.EstudianteCarrera;
 import model.Genero;
 import model.TipoOrdenamiento;
 import model.dto.CarreraInscriptos;
 import repository.CarreraRepositoryImpl;
+import repository.EstudianteCarreraRepositoryImpl;
 import repository.EstudianteRepository;
 import repository.EstudianteRepositoryImpl;
 
@@ -14,6 +16,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -41,21 +44,22 @@ los años de manera cronológica.
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Practico2");
 
         EstudianteRepositoryImpl estudianteRepository = new EstudianteRepositoryImpl(emf.createEntityManager());
-        //Estudiante e = new Estudiante("nombre", 10, Genero.FEMENINO, 10, "city");
-        //Estudiante e2 = new Estudiante("nombree",  10, Genero.FEMENINO, 10, "city");
-        //Estudiante e3 = new Estudiante("nombr2e", 10, Genero.FEMENINO, 10, "city");
+        CarreraRepositoryImpl carreraRepository = new CarreraRepositoryImpl(emf.createEntityManager());
+        Estudiante e = new Estudiante("pepe", 10, Genero.FEMENINO, 10, "city");
+        Carrera c = new Carrera("abogacia",10);
+
+
+        estudianteRepository.add(e);
+        carreraRepository.add(c);
+
+        EstudianteCarreraRepositoryImpl estudianteCarreraRepository = new EstudianteCarreraRepositoryImpl(emf.createEntityManager());
+
+        estudianteCarreraRepository.addEstudiante(estudianteRepository.getEstudiante(1),carreraRepository.getCarreraById(1));
 
        //System.out.println(estudianteRepository.estudiantesOrdenados(TipoOrdenamiento.DESCENDENTE));
         //System.out.println(estudianteRepository.getEstudiante(1));
-        Carrera c = new Carrera(1,"abogacia",10);
 
-        System.out.println(estudianteRepository.estudiantesResidencia(c,"Maipu"));
-        CarreraRepositoryImpl carreraRepository = new CarreraRepositoryImpl(emf.createEntityManager());
       //  Carrera carrera = new Carrera();
-
-
-
-        List<CarreraInscriptos> inscriptosPorCarrera = carreraRepository.getInscriptosPorCarrera();
 
 
 
@@ -64,5 +68,7 @@ los años de manera cronológica.
 //
 
         estudianteRepository.close();
+
+
     }
 }

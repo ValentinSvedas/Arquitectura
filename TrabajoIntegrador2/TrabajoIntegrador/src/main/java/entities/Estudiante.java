@@ -27,7 +27,7 @@ public class Estudiante {
     @Column
     private String ciudad;
 
-    @OneToMany(mappedBy = "estudiante", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "estudiante")
     private List<EstudianteCarrera> carreras;
 
     public Estudiante(String nombre, int edad, Genero genero, int numDocumento, String ciudad) {
@@ -46,4 +46,5 @@ public class Estudiante {
         this.numDocumento = numDocumento;
         this.ciudad = ciudad;
     }
+
 }

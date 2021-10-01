@@ -13,17 +13,18 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EstudianteCarrera {
+
    @EmbeddedId
    private EstudianteCarreraPK id;
 
    @MapsId("estudianteId")
    @JoinColumn(insertable = false, updatable = false)
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(cascade = CascadeType.PERSIST)
    private Estudiante estudiante;
 
    @MapsId("carreraId")
    @JoinColumn(insertable = false, updatable = false)
-   @ManyToOne(fetch = FetchType.LAZY)
+   @ManyToOne(cascade = CascadeType.PERSIST)
    private Carrera carrera;
 
    @Column
