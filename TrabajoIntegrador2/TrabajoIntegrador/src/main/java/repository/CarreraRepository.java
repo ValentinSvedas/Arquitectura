@@ -13,4 +13,6 @@ public interface CarreraRepository {
      * @return lista de carreras
      */
     List<CarreraInscriptos> getInscriptosPorCarrera();
+
+    Carrera getCarreraById(int carreraId);
 }

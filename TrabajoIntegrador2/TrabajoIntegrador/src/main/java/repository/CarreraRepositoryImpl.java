@@ -58,4 +58,9 @@ public class CarreraRepositoryImpl extends AbstractRepository<Carrera> implement
         carreras.sort(comparator.reversed());
         return carreras;
     }
+
+    @Override
+    public Carrera getCarreraById(int carreraId) {
+        return entityManager.find(Carrera.class, carreraId);
+    }
 }

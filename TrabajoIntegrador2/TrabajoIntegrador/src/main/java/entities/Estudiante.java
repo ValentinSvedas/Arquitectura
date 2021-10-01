@@ -14,8 +14,8 @@ import java.util.List;
 public class Estudiante {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int estudianteId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer estudianteId;
     @Column
     private String nombre;
     @Column

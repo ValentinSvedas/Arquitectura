@@ -13,7 +13,6 @@ public class AbstractRepository<T> {
         entityManager.getTransaction().begin();
         entityManager.persist(t);
         entityManager.getTransaction().commit();
-        entityManager.close();
     }
 
     public void close(){

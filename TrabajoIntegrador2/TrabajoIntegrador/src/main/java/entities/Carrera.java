@@ -11,14 +11,15 @@ import java.util.List;
 @NoArgsConstructor
 public class Carrera {
     @Id
-    private int carreraId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer carreraId;
     @Column
     private String nombre;
     @Column
     private int duracion;
 
-    @OneToMany(mappedBy = "carrera")
-   private List<EstudianteCarrera> estudianteCarrera;
+    @OneToMany(mappedBy = "carrera",cascade = CascadeType.PERSIST)
+    private List<EstudianteCarrera> estudianteCarrera;
 
     public Carrera(String nombre, int duracion) {
         this.nombre = nombre;
