@@ -18,73 +18,60 @@ public class EstudianteRepositoryImpl extends AbstractRepository<Estudiante> imp
 
     @Override
     public List<Estudiante> estudiantesOrdenados(TipoOrdenamiento tipoOrdenamiento) {
-        List<Estudiante> estudiantes = new ArrayList<>();
-        List<Estudiante> nativeQueryResultList = new ArrayList<>();
-        if (tipoOrdenamiento == tipoOrdenamiento.ASCENDENTE){
-        String query = "SELECT e"
-                + " from Estudiante e "
-                +"order by e.estudianteId ASC ";
-       Query nativeQuery = entityManager.createQuery(query);
-        nativeQueryResultList = nativeQuery.getResultList();
-        
-        }else if (tipoOrdenamiento == tipoOrdenamiento.DESCENDENTE){
-            String query = "SELECT e"
-                    + " from Estudiante e "
-                    +"order by e.estudianteId DESC ";
-            Query nativeQuery = entityManager.createQuery(query);
-            nativeQueryResultList = nativeQuery.getResultList();
+        String query = "SELECT e "
+              + "from Estudiante e "
+              + "order by e.estudianteId ";
 
+        if(tipoOrdenamiento == TipoOrdenamiento.ASCENDENTE) {
+            query += "ASC";
+        } else if (tipoOrdenamiento == TipoOrdenamiento.DESCENDENTE) {
+            query += "DESC";
         }
-        return getEstudiantes(estudiantes, nativeQueryResultList);
+        Query nativeQuery = entityManager.createQuery(query);
+        List<Estudiante> nativeQueryResultList = nativeQuery.getResultList();
+        return getEstudiantes(nativeQueryResultList);
     }
 
     @Override
     public Estudiante getEstudiante(int numLibreta) {
-    Estudiante e  = entityManager.find(Estudiante.class,numLibreta);
-        return e;
+        return entityManager.find(Estudiante.class,numLibreta);
     }
 
     @Override
     public List<Estudiante> estudiantesGenero(Genero g) {
-        int genero;
-        if (g.equals(Genero.FEMENINO)){
-             genero = 1;
-        }else{
-            genero = 0;
-        }
-        List<Estudiante> estudiantes = new ArrayList<>();
-        String query = "SELECT e"
-                + " from Estudiante e "
-                +"where e.genero = genero ";
-        Query nativeQuery = entityManager.createQuery(query);
+        String query = "SELECT e "
+              + "from Estudiante e "
+              + "where e.genero = ?1 ";
+        Query nativeQuery = entityManager.createQuery(query).setParameter(1, g);
         List<Estudiante> nativeQueryResultList = nativeQuery.getResultList();
-        return getEstudiantes(estudiantes, nativeQueryResultList);
+        return getEstudiantes(nativeQueryResultList);
     }
 
     @Override
     public List<Estudiante> estudiantesResidencia(Carrera c, String ciudad) {
         int id = c.getCarreraId();
-        List<Estudiante> estudiantes = new ArrayList<>();
+
         Query nativeQuery = entityManager.createQuery("SELECT e"
-                + " from Estudiante e "
-                + "JOIN EstudianteCarrera ec on ec.estudiante = e "
-                + "JOIN ec.carrera c on c.carreraId = :id "
-                + "WHERE e.ciudad like :ciudad");
+              + " from Estudiante e "
+              + "JOIN EstudianteCarrera ec on ec.estudiante = e "
+              + "JOIN ec.carrera c on c.carreraId = :id "
+              + "WHERE e.ciudad like :ciudad");
 
         List<Estudiante> nativeQueryResultList = nativeQuery.getResultList();
 
-        return getEstudiantes(estudiantes, nativeQueryResultList);
+        return getEstudiantes(nativeQueryResultList);
     }
 
-    private List<Estudiante> getEstudiantes(List<Estudiante> estudiantes, List<Estudiante> nativeQueryResultList) {
+    private List<Estudiante> getEstudiantes(List<Estudiante> nativeQueryResultList) {
+        List<Estudiante> estudiantes = new ArrayList<>();
         for (int i = 0; i < nativeQueryResultList.size(); i++) {
             Estudiante estudiante = new Estudiante(
-                    nativeQueryResultList.get(i).getEstudianteId(),
-                    nativeQueryResultList.get(i).getCiudad(),
-                    nativeQueryResultList.get(i).getEdad(),
-                    nativeQueryResultList.get(i).getGenero(),
-                    nativeQueryResultList.get(i).getNombre(),
-                    nativeQueryResultList.get(i).getNumDocumento()
+                  nativeQueryResultList.get(i).getEstudianteId(),
+                  nativeQueryResultList.get(i).getCiudad(),
+                  nativeQueryResultList.get(i).getEdad(),
+                  nativeQueryResultList.get(i).getGenero(),
+                  nativeQueryResultList.get(i).getNombre(),
+                  nativeQueryResultList.get(i).getNumDocumento()
             );
             estudiantes.add(estudiante);
             //String nombre, int edad, Genero genero, int numDocumento, String ciudad

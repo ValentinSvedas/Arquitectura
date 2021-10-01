@@ -8,6 +8,7 @@ import model.dto.CarreraInscriptos;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class CarreraRepositoryImpl extends AbstractRepository<Carrera> implements CarreraRepository {
@@ -25,7 +26,7 @@ public class CarreraRepositoryImpl extends AbstractRepository<Carrera> implement
                 + "ORDER BY c.carreraId";
         Query nativeQuery = entityManager.createQuery(query2);
         List<Object[]> nativeQueryResultList = nativeQuery.getResultList();
-         List<CarreraInscriptos> carreras = new ArrayList<>();
+        List<CarreraInscriptos> carreras = new ArrayList<>();
         int currentCarreraId = -1;
         CarreraInscriptos carreraInscriptos = new CarreraInscriptos();
         for (int i = 0; i < nativeQueryResultList.size(); i++) {
@@ -52,6 +53,9 @@ public class CarreraRepositoryImpl extends AbstractRepository<Carrera> implement
             );
             carreraInscriptos.addEstudiante(estudiante);
         }
+
+        Comparator<CarreraInscriptos> comparator = (carrera1, carrera2) -> carrera1.getInscriptos().size().compareTo(carrera2.getInscriptos().size());
+        carreras.sort(comparator);
         return carreras;
     }
 }
