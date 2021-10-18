@@ -54,16 +54,25 @@ los años de manera cronológica.
 
 
         estudianteRepository.add(e);
+        carreraRepository.add(c);
+
         estudianteRepository.add(e2);
         estudianteRepository.add(e3);
         estudianteRepository.add(e4);
-        carreraRepository.add(c);
         carreraRepository.add(c2);
 
+        EstudianteCarreraRepositoryImpl estudianteCarreraRepository = new EstudianteCarreraRepositoryImpl(emf.createEntityManager());
+        estudianteCarreraRepository.addEstudiante(estudianteRepository.getEstudiante(1),carreraRepository.getCarreraById(1));
+        estudianteCarreraRepository.addEstudiante(estudianteRepository.getEstudiante(2),carreraRepository.getCarreraById(1));
+        estudianteCarreraRepository.addEstudiante(estudianteRepository.getEstudiante(3),carreraRepository.getCarreraById(2));
+        estudianteCarreraRepository.addEstudiante(estudianteRepository.getEstudiante(4),carreraRepository.getCarreraById(2));
+
         //Algunos ejemplos de consultas
-        System.out.println(estudianteRepository.getEstudiante(2));
         TipoOrdenamiento to = TipoOrdenamiento.ASCENDENTE;
         System.out.println(estudianteRepository.estudiantesOrdenados(to));
+        System.out.println(estudianteRepository.estudiantesResidencia(c,"Tandil"));
+        System.out.println(carreraRepository.getInscriptosPorCarrera());
+        estudianteCarreraRepository.getReporteCarreras();
 
         estudianteRepository.close();
 

@@ -1,14 +1,12 @@
 package entities;
 
+import java.util.List;
+
+import javax.persistence.*;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import model.Genero;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
-import javax.persistence.Entity;
-import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
@@ -49,5 +47,4 @@ public class Estudiante {
         this.numDocumento = numDocumento;
         this.ciudad = ciudad;
     }
-
 }

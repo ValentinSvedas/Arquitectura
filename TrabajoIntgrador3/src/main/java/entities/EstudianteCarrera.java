@@ -3,7 +3,6 @@ package entities;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import utils.EstudianteCarreraPK;
 
 import javax.persistence.*;
 import java.util.Date;

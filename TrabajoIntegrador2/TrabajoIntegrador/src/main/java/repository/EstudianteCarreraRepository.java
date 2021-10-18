@@ -4,7 +4,7 @@ import java.util.List;
 
 import entities.Carrera;
 import entities.Estudiante;
-import model.dto.ReporteCarreras;
+import model.dto.CarreraInscriptos;
 
 public interface EstudianteCarreraRepository {
     /**
@@ -16,6 +16,7 @@ public interface EstudianteCarreraRepository {
      * Generar un reporte de las carreras, que para cada carrera incluya información de los
      * inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
      * los años de manera cronológica.
+     * @return
      */
-    List<ReporteCarreras> getReporteCarreras();
+    List<CarreraInscriptos> getReporteCarreras();
 }

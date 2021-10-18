@@ -31,7 +31,7 @@ public class EstudianteRepositoryImpl extends AbstractRepository<Estudiante> imp
         List<Estudiante> nativeQueryResultList = nativeQuery.getResultList();
         return getEstudiantes(nativeQueryResultList);
     }
-
+    
     @Override
     public Estudiante getEstudiante(int numLibreta) {
         return entityManager.find(Estudiante.class,numLibreta);
@@ -54,8 +54,8 @@ public class EstudianteRepositoryImpl extends AbstractRepository<Estudiante> imp
         Query nativeQuery = entityManager.createQuery("SELECT e"
               + " from Estudiante e "
               + "JOIN EstudianteCarrera ec on ec.estudiante = e "
-              + "JOIN ec.carrera c on c.carreraId = :id "
-              + "WHERE e.ciudad like :ciudad");
+              + "JOIN ec.carrera c on c.carreraId = ?1 "
+              + "WHERE e.ciudad like ?2").setParameter(1,id).setParameter(2,ciudad);
 
         List<Estudiante> nativeQueryResultList = nativeQuery.getResultList();
 
