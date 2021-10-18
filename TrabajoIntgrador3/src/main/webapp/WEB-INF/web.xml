@@ -3,17 +3,16 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	id="WebApp_ID" version="4.0">
-	<display-name>TrabajoIntgrador3</display-name>
 	<servlet>
-		<servlet-name>TrabajoIntegradorJersey</servlet-name>
+		<servlet-name>Jersey</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>jersey.config.server.provider.packages</param-name>
-			<param-value>TabajoIntegrador3.rest</param-value>
+			<param-value>rest</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>TrabajoIntgrador3</servlet-name>
+		<servlet-name>Jersey</servlet-name>
 		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
 </web-app>

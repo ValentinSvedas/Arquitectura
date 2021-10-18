@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -14,9 +15,14 @@ public class EntMF implements ServletContextListener {
 	public static javax.persistence.EntityManagerFactory emf;
 	
 	public void contextInitialized(ServletContextEvent arg) {
-		emf =Persistence.createEntityManagerFactory("PersistenceUnit");
+		emf = Persistence.createEntityManagerFactory("PersistenceUnit");
 	}
-	
+
+	@Override
+	public void contextDestroyed(ServletContextEvent servletContextEvent) {
+
+	}
+
 	public void destroyContext(ServletContextEvent arg) {
 		emf.close();
 	}
