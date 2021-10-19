@@ -1,5 +1,9 @@
 package utils;
 
+import rest.CarreraController;
+import rest.EstudianteCarreraController;
+import rest.EstudianteController;
+
 import java.util.Objects;
 
 import javax.persistence.EntityManager;
@@ -16,16 +20,22 @@ public class EntMF implements ServletContextListener {
 	
 	public void contextInitialized(ServletContextEvent arg) {
 		emf = Persistence.createEntityManagerFactory("PersistenceUnit");
+		EstudianteController estudianteController = new EstudianteController();
+		estudianteController.createEstudiantes();
+
+		CarreraController carreraController = new CarreraController();
+		carreraController.createCarreras();
+
+		EstudianteCarreraController estudianteCarreraController = new EstudianteCarreraController();
+		estudianteCarreraController.addEstudiantesCarrera();
+
 	}
 
 	@Override
 	public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
-	}
-
-	public void destroyContext(ServletContextEvent arg) {
 		emf.close();
 	}
+
 	public static EntityManager getEntityManager() {
 		if(Objects.equals(emf,null)) {
 			throw new IllegalStateException("Contexto no inicializado");

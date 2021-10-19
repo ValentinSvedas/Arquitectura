@@ -16,10 +16,9 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/estudiantecarrera")
-public class EstudianteCarreraREST {
+public class EstudianteCarreraController {
 
-    public EstudianteCarreraREST(){
-        addEstudiantesCarrera();
+    public EstudianteCarreraController(){
     }
 
     public void addEstudiantesCarrera(){
@@ -43,7 +42,7 @@ public class EstudianteCarreraREST {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @ApiResponse(description = "Muestra todos los estudiantes")
-    public List<EstudianteCarrera> getEstudianteCarrera(){
+    public List<EstudianteCarrera> getEstudianteCarrera() {
         return EstudianteCarreraRepository.getInstance().getAllEstudianteCarrera();
     }
 

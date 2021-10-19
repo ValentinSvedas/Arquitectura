@@ -12,7 +12,7 @@ import utils.EntMF;
 
 import javax.persistence.Query;
 
-public class EstudianteRepository extends AbstractRepository<Estudiante>{
+public class EstudianteRepository extends AbstractRepository<Estudiante> {
 
 	
 	private static EstudianteRepository estudianteRepository;

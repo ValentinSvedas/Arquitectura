@@ -1,12 +1,17 @@
 package repository;
 
 import javax.persistence.EntityManager;
+import java.lang.reflect.ParameterizedType;
 
 public class AbstractRepository<T> {
 	Class<T> entityClass;
-     EntityManager entityManager;
+    EntityManager entityManager;
 
     public AbstractRepository(EntityManager entityManager) {
+        this.entityClass = (Class<T>)
+                ((ParameterizedType)getClass()
+                        .getGenericSuperclass())
+                        .getActualTypeArguments()[0];
 		this.entityManager = entityManager;
     }
 

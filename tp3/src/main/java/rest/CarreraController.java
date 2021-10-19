@@ -11,10 +11,9 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/carrera")
-public class CarreraREST {
+public class CarreraController {
 
-    public CarreraREST(){
-        createCarreras();
+    public CarreraController(){
     }
 
     public void createCarreras(){
