@@ -9,11 +9,12 @@ import repository.CarreraRepository;
 import repository.EstudianteCarreraRepository;
 import repository.EstudianteRepository;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Path("/estudiantecarrera")
 public class EstudianteCarreraController {
@@ -44,6 +45,22 @@ public class EstudianteCarreraController {
     @ApiResponse(description = "Muestra todos los estudiantes")
     public List<EstudianteCarrera> getEstudianteCarrera() {
         return EstudianteCarreraRepository.getInstance().getAllEstudianteCarrera();
+    }
+
+    @POST
+    @Path("/carrera/{carreraId}/estudiante/{estudianteId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @ApiResponse(description = "Matricula un estudiante")
+    public Response createEstudianteCarrera(@PathParam("carreraId") Integer carreraId, @PathParam("estudianteId") Integer estudianteId) {
+        Estudiante estudiante = EstudianteRepository.getInstance().findById(estudianteId);
+        Carrera carrera = CarreraRepository.getInstance().findById(carreraId);
+        if(EstudianteCarreraRepository.getInstance().existsByCarreraEstudianteId(estudiante, carrera)) {
+            EstudianteCarrera estudianteCarrera = new EstudianteCarrera(estudiante, carrera, null, new Date());
+            EstudianteCarreraRepository.getInstance().add(estudianteCarrera);
+            return Response.status(201).entity(estudianteCarrera).build();
+        } else {
+            return Response.status(404).entity("El usuario ya se encuentra matriculado").build();
+        }
     }
 
 }

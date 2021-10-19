@@ -1,9 +1,12 @@
 package rest;
 
+import entities.Carrera;
 import entities.Estudiante;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import model.Genero;
 import model.TipoOrdenamiento;
+import repository.CarreraRepository;
 import repository.EstudianteRepository;
 import rest.request.EstudianteRequest;
 
@@ -33,9 +36,13 @@ public class EstudianteController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@ApiResponse(description = "Crea un estudiante")
-	public Response createEstudiante(EstudianteRequest e) {
+	public Response createEstudiante(@RequestBody EstudianteRequest e) {
 		Estudiante estudiante = new Estudiante();
 		estudiante.setNombre(e.getNombre());
+		estudiante.setCiudad(e.getCiudad());
+		estudiante.setEdad(e.getEdad());
+		estudiante.setGenero(e.getGenero());
+		estudiante.setNumDocumento(e.getNumDocumento());
 		EstudianteRepository.getInstance().add(estudiante);
 		return Response.status(201).entity(e).build();
 	}
@@ -47,6 +54,15 @@ public class EstudianteController {
 		return EstudianteRepository.getInstance().getAllEstudiantes();
 	}
 
+
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@ApiResponse(description = "Muestra todos los estudiantes")
+	public Estudiante getById(@PathParam("id") Integer id) {
+		return EstudianteRepository.getInstance().findById(id);
+	}
+
 	@GET
 	@Path("/genero/{genero}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -56,18 +72,20 @@ public class EstudianteController {
 	}
 
 	@GET
-	@Path("/{TipoOrdenamiento}")
+	@Path("/ordenado/{TipoOrdenamiento}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@ApiResponse(description = "Muestra todos los estudiantes segun el criterio de ordenamiento")
-	public List<Estudiante> getEstudiantesTipoOrdenamiento(@PathParam("TipoOrdenamiento") TipoOrdenamiento tipoordenamiento){
+	public List<Estudiante> getEstudiantesTipoOrdenamiento(@PathParam("TipoOrdenamiento") TipoOrdenamiento tipoordenamiento) {
 		return EstudianteRepository.getInstance().estudiantesOrdenados(tipoordenamiento);
 	}
 
-
-
-
-
-
-
+	@GET
+	@Path("/carrera/{carreraId}/ciudad/{ciudad}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@ApiResponse(description = "Muestra todos los estudiantes")
+	public List<Estudiante> getById(@PathParam("carreraId") Integer carreraId, @PathParam("ciudad") String ciudad) {
+		Carrera byId = CarreraRepository.getInstance().findById(carreraId);
+		return EstudianteRepository.getInstance().getEstudiantesByCarreraCiudad(byId, ciudad);
+	}
 
 }

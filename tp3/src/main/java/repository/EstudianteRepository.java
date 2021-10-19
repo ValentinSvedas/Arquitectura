@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 
+import entities.Carrera;
 import entities.Estudiante;
 import model.Genero;
 import model.TipoOrdenamiento;
@@ -73,6 +74,20 @@ public class EstudianteRepository extends AbstractRepository<Estudiante> {
 			estudiantes.add(estudiante);
 		}
 		return estudiantes;
+	}
+
+	public List<Estudiante> getEstudiantesByCarreraCiudad(Carrera c, String ciudad) {
+		int id = c.getCarreraId();
+
+		Query nativeQuery = entityManager.createQuery("SELECT e"
+				+ " from Estudiante e "
+				+ "JOIN EstudianteCarrera ec on ec.estudiante = e "
+				+ "JOIN ec.carrera c on c.carreraId = ?1 "
+				+ "WHERE e.ciudad like ?2").setParameter(1,id).setParameter(2,ciudad);
+
+		List<Estudiante> nativeQueryResultList = nativeQuery.getResultList();
+
+		return getEstudiantes(nativeQueryResultList);
 	}
 
 }

@@ -30,6 +30,7 @@ public class EstudianteCarreraRepository extends AbstractRepository<EstudianteCa
         EstudianteCarrera estudianteCarrera = new EstudianteCarrera(e,carrera,new Date(124,8,22) , new Date());
         add(estudianteCarrera);
     }
+
     public List<EstudianteCarrera> getAllEstudianteCarrera(){
             String query = "SELECT ec "
                     + "from EstudianteCarrera ec ";
@@ -46,7 +47,17 @@ public class EstudianteCarreraRepository extends AbstractRepository<EstudianteCa
                 Ecarreras.add(ec);
             }
             return Ecarreras;
+    }
 
+    public boolean existsByCarreraEstudianteId(Estudiante estudiante, Carrera carrera) {
+        String query = "SELECT ec "
+                + "from EstudianteCarrera ec where ec.estudiante = ?1 AND ec.carrera = ?2";
+        Query queryR = entityManager.createQuery(query)
+                .setParameter(1, estudiante)
+                .setParameter(2, carrera);
+
+        List<Object[]> queryResultList = queryR.getResultList();
+        return queryResultList.size() > 0;
     }
 }
 

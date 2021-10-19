@@ -17,7 +17,7 @@ public class CarreraController {
     }
 
     public void createCarreras(){
-        if(CarreraRepository.getInstance().getAllCarreras().isEmpty()){
+        if (CarreraRepository.getInstance().getAllCarreras().isEmpty()){
           CarreraRepository.getInstance().add(new Carrera("Abogacia",5));
           CarreraRepository.getInstance().add(new Carrera("Programacion",2));
         }
