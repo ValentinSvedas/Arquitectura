@@ -19,13 +19,4 @@ public class Cliente {
 
     @Column
     private String nombre;
-
-    @Column
-    private int cant_productos;
-
-    @OneToMany (mappedBy = "cliente")
-    private List<Producto> productos;
-
-
-
 }

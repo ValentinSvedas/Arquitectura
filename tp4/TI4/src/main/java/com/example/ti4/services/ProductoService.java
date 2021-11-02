@@ -28,4 +28,8 @@ public class ProductoService {
         this.productos.save(p);
         return true;
     }
+
+    public Optional<Producto> findById(int productoId) {
+        return this.productos.findById(productoId);
+    }
 }

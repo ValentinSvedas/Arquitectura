@@ -42,7 +42,7 @@ public class ClienteController {
 
     @GetMapping("")
     public List<Cliente> getAll(){
-        return this.servicioClientes.getClientes();
+        return this.servicioClientes.findAll();
     }
 
 }
