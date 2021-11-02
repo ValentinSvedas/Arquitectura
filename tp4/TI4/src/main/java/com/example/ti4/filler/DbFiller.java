@@ -19,7 +19,7 @@ import java.util.stream.IntStream;
             return args-> {
                 IntStream.range(0, 10).forEach(i->{
                     List<Producto> p = new ArrayList<>();
-                    Cliente c = new Cliente(i,"juan"+i,0,p);
+                    Cliente c = new Cliente(i,"j"+i,0,p);
                     clientes.save(c);
                 });
             };

@@ -22,6 +22,7 @@ public class ClienteService {
     public List<Cliente> getClientes() {
         return this.clientes.findAll();
     }
+
     @Transactional
     public Boolean addCliente(Cliente c) {
         this.clientes.save(c);
