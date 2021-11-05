@@ -10,5 +10,5 @@ import lombok.Data;
 @Data
 public class ClienteComprasReporte {
     private Cliente cliente;
-    private int total;
+    private double total;
 }

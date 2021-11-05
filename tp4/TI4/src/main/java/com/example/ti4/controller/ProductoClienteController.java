@@ -1,5 +1,6 @@
 package com.example.ti4.controller;
 
+import com.example.ti4.controller.dto.ClienteComprasReporte;
 import com.example.ti4.controller.dto.ProductoCantVendido;
 import com.example.ti4.controller.dto.ProductoClienteDto;
 import com.example.ti4.controller.dto.ProductoClienteReporte;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -59,11 +61,22 @@ public class ProductoClienteController {
         return this.productoClienteService.reporteVentasPorDias();
     }
 
-    public ProductoClienteReporte getProductoClienteReport() {
+    @GetMapping("/clienteMonto")
+    public List<ClienteComprasReporte> getProductoClienteReport() {
         List<ProductoCliente> all = productoClienteService.findAll();
-        for(ProductoCliente p: all) {
-
+        List<Cliente> clientesTotales = clienteService.findAll();
+        List<ClienteComprasReporte> clientesMonto = new ArrayList<>();
+        for (Cliente c: clientesTotales){
+            ClienteComprasReporte ccr = new ClienteComprasReporte();
+            ccr.setCliente(c);
+            for(ProductoCliente p: all) {
+                if (Objects.equals(p.getCliente(),ccr.getCliente())){
+                    ccr.setTotal(ccr.getTotal()+p.getProducto().getPrecio());
+                }
+            }
+            clientesMonto.add(ccr);
         }
-        return null;
+
+        return clientesMonto;
     }
 }

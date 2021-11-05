@@ -1,6 +1,7 @@
 package com.example.ti4.services;
 
 import com.example.ti4.controller.ClienteController;
+import com.example.ti4.controller.dto.ClienteComprasReporte;
 import com.example.ti4.controller.dto.ProductoCantVendido;
 import com.example.ti4.controller.dto.ProductoClienteReporte;
 import com.example.ti4.entities.Producto;
@@ -67,6 +68,7 @@ public class ProductoClienteService {
         Collections.reverse(listaProductoClienteReporte);
         return listaProductoClienteReporte;
     }
+
 
     /**
      * Agarra el producto más vendido
