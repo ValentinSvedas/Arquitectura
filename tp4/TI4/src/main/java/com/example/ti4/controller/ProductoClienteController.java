@@ -1,5 +1,6 @@
 package com.example.ti4.controller;
 
+import com.example.ti4.controller.dto.ProductoCantVendido;
 import com.example.ti4.controller.dto.ProductoClienteDto;
 import com.example.ti4.controller.dto.ProductoClienteReporte;
 import com.example.ti4.entities.Cliente;
@@ -11,12 +12,10 @@ import com.example.ti4.services.ClienteService;
 import com.example.ti4.services.ProductoClienteService;
 import com.example.ti4.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,9 +50,16 @@ public class ProductoClienteController {
         productoCliente.setDate(LocalDate.now());
         return this.productoClienteService.save(productoCliente);
     }
+    @GetMapping("/productoMasVendido")
+    public ProductoCantVendido getProductoMasVendido(){
+     return this.productoClienteService.findProductoMasVendido();
+    }
+    @GetMapping("/ventasPorDia")
+    public List<ProductoClienteReporte> getVentasPorDia(){
+        return this.productoClienteService.reporteVentasPorDias();
+    }
 
     public ProductoClienteReporte getProductoClienteReport() {
-        //
         List<ProductoCliente> all = productoClienteService.findAll();
         for(ProductoCliente p: all) {
 

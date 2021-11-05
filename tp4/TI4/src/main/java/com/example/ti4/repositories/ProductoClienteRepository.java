@@ -13,4 +13,5 @@ public interface ProductoClienteRepository extends JpaRepository<ProductoCliente
 //    List<Article> findAllBySameDate(@Param("creationDateTime") Date creationDateTime);
 
     List<ProductoCliente> findAllByDate(LocalDate date);
+
 }
