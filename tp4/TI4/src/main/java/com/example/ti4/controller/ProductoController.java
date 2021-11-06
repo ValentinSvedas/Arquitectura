@@ -32,7 +32,7 @@ public class ProductoController {
         return new ResponseEntity<>(producto.get(), HttpStatus.OK);
     }
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<Producto> addProducto(@RequestBody Producto p){
         Boolean ok = this.servicioProducto.addProducto(p);
         if(!ok){
@@ -41,7 +41,7 @@ public class ProductoController {
         return new ResponseEntity<>(p,HttpStatus.OK);
     }
 
-    @GetMapping("")
+    @GetMapping
     public List<Producto> getAll(){
         return this.servicioProducto.getProductos();
     }

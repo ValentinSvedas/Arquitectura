@@ -83,7 +83,7 @@ public class ProductoClienteService {
             pcv.setCantidad(pv.getCantidad());
             if (!productos.contains(pcv)){
                 productos.add(pcv);
-            }else{
+            } else {
                 for (ProductoCantVendido p: productos){
                     if (Objects.equals(pv.getProducto().getNombre(),p.getName())){
                        p.setCantidad(pv.getCantidad()+p.getCantidad());

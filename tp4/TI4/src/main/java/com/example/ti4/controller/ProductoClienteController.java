@@ -52,10 +52,12 @@ public class ProductoClienteController {
         productoCliente.setDate(LocalDate.now());
         return this.productoClienteService.save(productoCliente);
     }
+
     @GetMapping("/productoMasVendido")
     public ProductoCantVendido getProductoMasVendido(){
      return this.productoClienteService.findProductoMasVendido();
     }
+
     @GetMapping("/ventasPorDia")
     public List<ProductoClienteReporte> getVentasPorDia(){
         return this.productoClienteService.reporteVentasPorDias();

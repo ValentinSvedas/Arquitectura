@@ -31,16 +31,16 @@ public class ClienteController {
         return new ResponseEntity<>(cliente.get(), HttpStatus.OK);
     }
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<Cliente> addCliente(@RequestBody Cliente c){
-       Boolean ok = this.servicioClientes.addCliente(c);
-       if(!ok){
-             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-       }
-       return new ResponseEntity<>(c,HttpStatus.OK);
+        Boolean ok = this.servicioClientes.addCliente(c);
+        if(!ok){
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+        return new ResponseEntity<>(c,HttpStatus.OK);
     }
 
-    @GetMapping("")
+    @GetMapping
     public List<Cliente> getAll(){
         return this.servicioClientes.findAll();
     }

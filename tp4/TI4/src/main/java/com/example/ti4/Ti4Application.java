@@ -1,13 +1,11 @@
 package com.example.ti4;
 
-import com.example.ti4.entities.ProductoCliente;
-import com.example.ti4.services.ProductoClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
+@EnableSwagger2
 public class Ti4Application {
 
     public static void main(String[] args) {
