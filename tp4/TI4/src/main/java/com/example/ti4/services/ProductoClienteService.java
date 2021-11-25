@@ -4,6 +4,7 @@ import com.example.ti4.controller.ClienteController;
 import com.example.ti4.controller.dto.ClienteComprasReporte;
 import com.example.ti4.controller.dto.ProductoCantVendido;
 import com.example.ti4.controller.dto.ProductoClienteReporte;
+import com.example.ti4.entities.Cliente;
 import com.example.ti4.entities.Producto;
 import com.example.ti4.entities.ProductoCliente;
 import com.example.ti4.exceptions.ClienteMasDe3ProductosException;
@@ -17,16 +18,30 @@ import java.time.LocalDate;
 import java.util.*;
 
 @Service
+
 public class ProductoClienteService {
     private static Logger LOG = LoggerFactory.getLogger(ProductoClienteService.class);
 
     @Autowired
     private ProductoClienteRepository productoClienteRepository;
 
-    public List<ProductoCliente> findAll() {
-        return productoClienteRepository.findAll();
+    @Autowired
+    private ClienteService clienteService;
+
+    public ProductoClienteService(ProductoClienteRepository productoClienteRepository, ClienteService clienteService) {
+        this.productoClienteRepository = productoClienteRepository;
+        this.clienteService = clienteService;
     }
 
+    public List<Cliente> findAllClientes() {
+        return clienteService.findAll();
+    }
+
+    /**
+     * Guarda en la base de datos el producto vendido con la cantidad, comprueba que no se vendan 3 productos por persona en el día
+     * @param productoCliente
+     * @return producto vendido
+     */
     public ProductoCliente save(ProductoCliente productoCliente) {
         List<ProductoCliente> allByDate = productoClienteRepository.findAllByDate(LocalDate.now());
         int reduce = allByDate.stream()
@@ -41,8 +56,8 @@ public class ProductoClienteService {
     }
 
     /**
-     * trae las ventas por dias
-     * @return
+     * Genera un reporte de las ventas que se hicieron en el día
+     * @return  Lista de los productos por clientes vendidos
      */
     public List<ProductoClienteReporte> reporteVentasPorDias(){
         List<ProductoCliente> productosVendidos = this.productoClienteRepository.findAll();
@@ -71,8 +86,8 @@ public class ProductoClienteService {
 
 
     /**
-     * Agarra el producto más vendido
-     * @return
+     * Agarra el producto que más se vendio hasta el momento
+     * @return la cantidad del producto y el nombre del producto
      */
     public ProductoCantVendido findProductoMasVendido(){
         List<ProductoCliente> productosVendidos = this.productoClienteRepository.findAll();
@@ -93,6 +108,28 @@ public class ProductoClienteService {
         }
         Collections.sort(productos);
         return productos.get(0);
+    }
+
+    /**
+     * Muestra todos los clientes y el monto total de sus compras
+     * @return Devuelve una lista con DTOs que almacenan a cada cliente y su monto de compras
+     */
+    public List<ClienteComprasReporte> getProductoClienteReport() {
+        List<ProductoCliente> all = this.productoClienteRepository.findAll();
+        List<Cliente> clientesTotales = this.findAllClientes();
+        List<ClienteComprasReporte> clientesMonto = new ArrayList<>();
+        for (Cliente c: clientesTotales){
+            ClienteComprasReporte ccr = new ClienteComprasReporte();
+            ccr.setCliente(c);
+            for(ProductoCliente p: all) {
+                if (Objects.equals(p.getCliente(),ccr.getCliente())){
+                    ccr.setTotal(ccr.getTotal()+p.getProducto().getPrecio()*p.getCantidad());
+                }
+            }
+            clientesMonto.add(ccr);
+        }
+
+        return clientesMonto;
     }
 
 

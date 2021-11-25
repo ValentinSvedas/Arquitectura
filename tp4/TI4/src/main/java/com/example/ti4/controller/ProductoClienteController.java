@@ -53,32 +53,21 @@ public class ProductoClienteController {
         return this.productoClienteService.save(productoCliente);
     }
 
+
     @GetMapping("/productoMasVendido")
     public ProductoCantVendido getProductoMasVendido(){
      return this.productoClienteService.findProductoMasVendido();
     }
+
 
     @GetMapping("/ventasPorDia")
     public List<ProductoClienteReporte> getVentasPorDia(){
         return this.productoClienteService.reporteVentasPorDias();
     }
 
+
     @GetMapping("/clienteMonto")
     public List<ClienteComprasReporte> getProductoClienteReport() {
-        List<ProductoCliente> all = productoClienteService.findAll();
-        List<Cliente> clientesTotales = clienteService.findAll();
-        List<ClienteComprasReporte> clientesMonto = new ArrayList<>();
-        for (Cliente c: clientesTotales){
-            ClienteComprasReporte ccr = new ClienteComprasReporte();
-            ccr.setCliente(c);
-            for(ProductoCliente p: all) {
-                if (Objects.equals(p.getCliente(),ccr.getCliente())){
-                    ccr.setTotal(ccr.getTotal()+p.getProducto().getPrecio());
-                }
-            }
-            clientesMonto.add(ccr);
-        }
-
-        return clientesMonto;
+        return this.productoClienteService.getProductoClienteReport();
     }
 }

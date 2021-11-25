@@ -19,20 +19,39 @@ public class ProductoService {
     @Autowired
     private ProductoRepository productos;
 
+    /**
+     * busca un producto especifico
+     * @param id
+     * @return producto
+     */
     public Optional<Producto> getProductoById(int id){
         return this.productos.findById((id));
     }
 
+    /**
+     * busca todos los producto
+     * @return lista de productos
+     */
     public List<Producto> getProductos() {
         return this.productos.findAll();
     }
 
+    /**
+     * Añade un producto
+     * @param p
+     * @return Boolean
+     */
     @Transactional
     public Boolean addProducto(Producto p) {
         this.productos.save(p);
         return true;
     }
 
+    /**
+     * Busca producto por id
+     * @param productoId
+     * @return Producto
+     */
     public Optional<Producto> findById(int productoId) {
         return this.productos.findById(productoId);
     }
