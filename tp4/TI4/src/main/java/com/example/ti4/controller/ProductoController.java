@@ -1,6 +1,5 @@
 package com.example.ti4.controller;
 
-import com.example.ti4.entities.Cliente;
 import com.example.ti4.entities.Producto;
 import com.example.ti4.services.ProductoService;
 import org.slf4j.Logger;
@@ -33,9 +32,9 @@ public class ProductoController {
     }
 
     @PostMapping
-    public ResponseEntity<Producto> addProducto(@RequestBody Producto p){
+    public ResponseEntity<Producto> addProducto(@RequestBody Producto p) {
         Boolean ok = this.servicioProducto.addProducto(p);
-        if(!ok){
+        if (!ok) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
         return new ResponseEntity<>(p,HttpStatus.OK);

@@ -43,13 +43,13 @@ public class ProductoClienteService {
      * @return producto vendido
      */
     public ProductoCliente save(ProductoCliente productoCliente) {
-        List<ProductoCliente> allByDate = productoClienteRepository.findAllByDate(LocalDate.now());
+        List<ProductoCliente> allByDate = productoClienteRepository.findAllByDateAndCliente(LocalDate.now(), productoCliente.getCliente());
         int reduce = allByDate.stream()
                 .map(pc -> pc.getCantidad())
                 .reduce((x, y) -> x + y)
                 .orElse(0);
-        if (reduce + productoCliente.getCantidad() >= 3) {
-            LOG.error("El cliente no puede cargar mas de un producto por dia");
+        if (reduce + productoCliente.getCantidad() > 3) {
+            LOG.error("El cliente no puede cargar mas de 3 productos por dia");
             throw new ClienteMasDe3ProductosException();
         }
         return productoClienteRepository.save(productoCliente);

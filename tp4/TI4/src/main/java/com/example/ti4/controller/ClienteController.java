@@ -22,7 +22,7 @@ public class ClienteController {
     private ClienteService servicioClientes;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> getCliente(@PathVariable("id")int id){
+    public ResponseEntity<Cliente> getCliente(@PathVariable("id") int id){
         LOG.info("Buscando Cliente {}",id);
         Optional<Cliente> cliente = this.servicioClientes.getClienteById(id);
         if (!cliente.isPresent()){
@@ -32,9 +32,9 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> addCliente(@RequestBody Cliente c){
+    public ResponseEntity<Cliente> addCliente(@RequestBody Cliente c) {
         Boolean ok = this.servicioClientes.addCliente(c);
-        if(!ok){
+        if (!ok) {
             return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
         return new ResponseEntity<>(c,HttpStatus.OK);

@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(value = {NotFoundException.class})
-    public String notFoundExceptionResolver(NotFoundException exc) {
+    @ExceptionHandler(value = {Exception.class})
+    public String notFoundExceptionResolver(Exception exc) {
         return exc.getMessage();
     }
 
